@@ -1,7 +1,6 @@
 const router = require("express").Router();
+const AuthApiController = require("../controllers/apis/AuthApi");
 
-router.get("/", (req, res) => {
-  res.json({ message: "Hello World!" });
-});
+router.post("/login", AuthApiController.loginApi);
 
 module.exports = router;
