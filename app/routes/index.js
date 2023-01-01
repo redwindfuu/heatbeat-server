@@ -1,7 +1,7 @@
-const AuthPageRouter = require("./authPageRoute");
-const AuthApiRouter = require("./authApiRoute");
-const HeartbeatApiRouter = require("./heartbeatApiRoute");
-const HeartbeatPageRouter = require("./heartbeatPageRoute");
+const AuthPageRouter = require("./auth.page.route");
+const AuthApiRouter = require("./auth.api.route");
+const HeartbeatApiRouter = require("./heartbeat.api.route");
+const HeartbeatPageRouter = require("./heartbeat.page.route");
 
 function routes(app) {
   //for page

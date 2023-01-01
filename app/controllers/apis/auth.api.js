@@ -1,4 +1,4 @@
-const Users = require('../../models/userModel');
+const Users = require('../../models/user.model');
 
 const loginApi = async (req, res) => {
   try {
