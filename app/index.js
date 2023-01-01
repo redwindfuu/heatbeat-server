@@ -5,9 +5,10 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const routes = require("./routes/");
 const { engine, create } = require("express-handlebars");
-const bodyParser = require('body-parser');
+const bodyParser = require("body-parser");
+const session = require("express-session");
+var passport = require('passport');
 var app = express();
-
 
 // view engine setup
 app.engine(".hbs", engine({ extname: ".hbs" }));
@@ -21,8 +22,30 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "./public")));
 
 app.use(bodyParser.urlencoded({ extended: true }));
+//
+app.use(session({
+  secret : "secret",
+  saveUninitialized: true,
+  resave: true
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 routes(app);
+
+app.get("/", (req, res) => {
+  if (req.user) {
+    res.redirect("/page/heartbeat");
+  } else {
+    res.redirect("/page/auth/login");
+  }
+});
+
+//route not found
+app.use(function (req, res, next) {
+  res.status(404).render("404");
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
