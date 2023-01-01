@@ -1,60 +1,31 @@
-<div class="materialContainer">
-    <div class="box">
 
-        <div class="title">LOGIN</div>
-        <form  method="post" action="/auth/login" >
-            <div class="input">
-                <label for="name">Username</label>
-                <input type="text" name="name" id="name" value="  " >
-                <span class="spin"></span>
+<div class="container">
+	<div class="screen">
+		<div class="screen__content">
+            <div class="screen__title">
+                <p class="login-register__title">Login</p>
+                <a href="register" class="login-register__link">Register</a>	
             </div>
-    
-            <div class="input">
-                <label for="pass">Password</label>
-                <input type="password" name="pass" id="pass" value=" " >
-                <span class="spin"></span>
-            </div>
-
-        </form>
-
-        <div class="button login">
-            <button><span>GO</span> <i class="fa fa-check"></i></button>
-        </div>
-
-        <a href="" class="pass-forgot">Forgot your password?</a>
-
-    </div>
-
-    <div class="overbox">
-        <div class="material-button alt-2"><span class="shape"></span></div>
-
-        <div class="title">REGISTER</div>
-
-        <div class="input">
-            <label for="regname">Username</label>
-            <input type="text" name="regname" id="regname">
-            <span class="spin"></span>
-        </div>
-
-        <div class="input">
-            <label for="regpass">Password</label>
-            <input type="password" name="regpass" id="regpass">
-            <span class="spin"></span>
-        </div>
-
-        <div class="input">
-            <label for="reregpass">Repeat Password</label>
-            <input type="password" name="reregpass" id="reregpass">
-            <span class="spin"></span>
-        </div>
-
-        <div class="button">
-            <button><span>NEXT</span></button>
-        </div>
-
-
-    </div>
-
+			<form id="login" method="POST" action="/api/auth/login" class="login-register">
+				<div class="login-register__field">
+					<i class="login-register__icon fas fa-user"></i>
+					<input type="text" class="login-register__input" name="username" id="username" placeholder="User name">
+				</div>
+				<div class="login-register__field">
+					<i class="login-register__icon fas fa-lock"></i>
+					<input type="password" class="login-register__input" name="password" id="password" placeholder="Password">
+				</div>
+			</form>
+            <button type="submit" form="login" class="button login-register__submit">
+                <span class="button__text">Log In Now</span>
+                <i class="button__icon fas fa-chevron-right"></i>
+            </button>		
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		
+	</div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script src="/javascripts/action.js"></script>

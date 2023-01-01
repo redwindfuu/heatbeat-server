@@ -1,0 +1,64 @@
+
+<div class="container">
+	<div class="screen">
+		<div class="screen__content">
+			<div class="screen__title">
+                <p class="login-register__title">Register</p>
+                <a href="login" class="login-register__link">Login</a>		
+            </div>
+			<form id="register" method="POST" action="/api/auth/register" class="login-register login-register__scroll">
+				<div class="login-register__field">
+					<i class="login-register__icon fas fa-user"></i>
+					<input type="text" class="login-register__input" name="username" id="username" placeholder="User name">
+				</div>
+				<div class="login-register__field">
+					<i class="login-register__icon fas fa-lock"></i>
+					<input type="password" class="login-register__input" name="password" id="password" placeholder="Password">
+				</div>
+				<div class="login-register__field">
+					<i class="login-register__icon fas fa-lock"></i>
+					<input type="password" class="login-register__input" name="confirmPassword" id="confirmPassword" placeholder="Confirm password">
+				</div>
+				<div class="login-register__field">
+					<i class="login-register__icon fas fa-user"></i>
+					<input type="text" class="login-register__input" name="fullname" id="fullname" placeholder="Full name">
+				</div>
+				<div class="login-register__field">
+					<i class="login-register__icon fas fa-user"></i>
+					<input type="date" class="login-register__input" name="birthday" id="birthday" placeholder="">
+				</div>
+				<div class="login-register__checkbox login-register__checkbox--flex">
+					<i class="login-register__icon fas fa-user"></i>
+					<label for="isPlaySports">Is play sports</label>
+					<input type="checkbox" class="login-register__input-checkbox" name="isPlaySports" id="isPlaySports">
+				</div>
+				<div class="login-register__checkbox">
+					<p>Gender</p>
+					<input type="radio" id="male" name="gender" value="male">
+					<label for="male">Male</label><br>
+					<input type="radio" id="female" name="gender" value="female">
+					<label for="female">Female</label><br>
+				</div>
+				<div class="login-register__checkbox">
+					<p>Where is your live ?</p>
+					<input type="radio" id="delta" name="whereLive" value="delta">
+					<label for="delta">Delta</label><br>
+					<input type="radio" id="plateau" name="whereLive" value="plateau">
+					<label for="plateau">Plateau</label><br>
+					<input type="radio" id="highland" name="whereLive" value="highland">
+					<label for="highland">Highland</label><br>
+				</div>
+			</form>
+			<button type="submit" form="register" class="button login-register__submit">
+				<span class="button__text">Register Now</span>
+				<i class="button__icon fas fa-chevron-right"></i>
+			</button>		
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		
+	</div>
+</div>

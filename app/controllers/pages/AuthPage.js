@@ -1,4 +1,5 @@
 var hb = require("express-handlebars").create();
+
 //URL: page/auth/login
 const LoginPage = async (req, res, next) => {
   try {
@@ -8,6 +9,16 @@ const LoginPage = async (req, res, next) => {
   }
 };
 
+//URL: page/auth/login
+const RegisterPage = async (req, res, next) => {
+  try {
+    res.render("pages/register", { title: "Register Page" });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   LoginPage,
+  RegisterPage,
 };
