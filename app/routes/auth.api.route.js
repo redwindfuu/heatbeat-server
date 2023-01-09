@@ -6,6 +6,7 @@ router.post(
   "/login",
   passport.authenticate("local", {
     failureRedirect: "/page/auth/login?error=1",
+    failureMessage: true,
   }),
   AuthApiController.loginApi
 );
