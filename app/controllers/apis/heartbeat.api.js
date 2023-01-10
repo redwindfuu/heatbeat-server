@@ -32,9 +32,15 @@ module.exports = {
       }
 
       const healthInfo = calHealth(heartbeatList, user);
+      console.log(heartbeatList[0].beat);
+      let avg_beat =
+        heartbeatList.reduce((a, b) => a + b.beat, 0) /
+        heartbeatList.length;
+      console.log("average" + avg_beat);
       const data = {
         userInfo: user,
         healthInfo,
+        avg_beat,
         dataList: heartbeatList,
       };
       return res.status(200).json({
