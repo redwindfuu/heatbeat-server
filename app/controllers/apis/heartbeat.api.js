@@ -33,9 +33,11 @@ module.exports = {
 
       const healthInfo = calHealth(heartbeatList, user);
       const data = {
-        userInfo: user,
-        healthInfo,
-        dataList: heartbeatList,
+        userId: user.id,
+        name: user.name,
+        messages: healthInfo.message.join(', '),
+        evaluate: healthInfo.evaluate,
+        listHeartBeat: heartbeatList.splice(heartbeatList.length - 5, heartbeatList.length - 1),
       };
       return res.status(200).json({
         status: "success",
