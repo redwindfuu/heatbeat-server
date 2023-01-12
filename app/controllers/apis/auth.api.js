@@ -2,6 +2,15 @@ const Users = require("../../models/user.model");
 
 const loginApi = async (req, res) => {
   try {
+    let { username, password } = req.body;
+    const user = await Users.findOne({ username: username, password: password });
+      if (!user) {
+        return res.status(400).json({
+          status: "error",
+          message: "User not found",
+        });
+      }
+    req.session.userId = user.id;
     res.redirect("/page/heartbeat");
   } catch (error) {
     res.status(500).json({ message: error.message });

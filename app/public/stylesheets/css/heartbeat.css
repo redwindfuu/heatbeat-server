@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;	
+	font-family: Raleway, sans-serif;
+}
+
+body {
+	background: linear-gradient(90deg, #C7C5F4, #776BCC);		
+}
+
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+}
+
+.row-custom {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.card-custom {		
+	background: linear-gradient(360deg, #d3d3d3, #ffffff);		
+	position: relative;	
+	width: 400px;	
+	box-shadow: 0px 0px 24px #5C5696;
+    margin: 0 24px;;
+    padding: 32px 32px;
+    border-radius: 12px;
+}
+
+.card-custom-table {
+    width: 600px;	
+}
+
+.card-custom .card-custom-header {
+    border-bottom: 2px solid #d3d3d3;
+}
+
+.card-custom-header h4 {
+    margin-bottom: 18px;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.card-custom-body {
+    margin-top: 24px;
+}
+
+.c-content {
+    padding: 0 12px 0 12px;
+}
+
+.c-content h5 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.c-content .s-content .s-form .note {
+    font-weight: 400;
+    font-size: 1.1rem;
+    float: left;
+}
+.c-content .s-content .s-form .val {
+    font-size: 1.1rem;
+    font-weight: 500;
+    float: right;
+}
+.c-content .s-content .s-table {
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.info-person {
+    display: inline-block;
+    margin: 20px 0;
+}
+
+.info-person .avatar {
+    float: left;
+    margin-right: 16px;
+    overflow: hidden;
+}
+
+.info-person .info {
+    float: left;
+    padding-top: 10px;
+}
+
+.info-person .info .name {
+    font-weight: 600;
+}
+
+.info-person .info .username {
+    font-weight: 500;
+}
+
+.c-content .s-form {
+    display: flow-root;
+    padding: 6px 0px;
+}

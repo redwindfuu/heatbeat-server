@@ -1,1 +1,154 @@
-{{title}}
+
+<div class="container">
+	<div class="row-custom">
+		<div class="card-custom">
+			<div class="card-custom-header">
+				<h4>Thông tin cá nhân</h4>
+			</div>
+			<div class="card-custom-body">
+				<div class="c-content">
+					<div class="info-person">
+						<div class="avatar">
+							<img src="https://firebasestorage.googleapis.com/v0/b/calibee-b685e.appspot.com/o/calibee_9378492467_1671779961591.png?alt=media&token=a4c941ea-137b-4dc7-b683-f061f3521945" alt="" width="60" height="60">
+						</div>
+						<div class="info">
+							<div class="name">Nguyễn Hữu Phú</div>
+							<div class="username">ngonghinh</div>
+						</div>
+					</div>
+				</div>
+				<div class="c-content">
+					<div class="s-content ">
+						<div class="s-form">
+							<label class="note">Giới tính:</label>
+							<span class="val">Nữ</span>
+						</div>
+						<div class="s-form">
+							<label class="note">Chơi thể thao:</label>
+							<span class="val">Có</span>
+						</div>
+						<div class="s-form">
+							<label class="note">Sống tại:</label>
+							<span class="val">Đồng bằng</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="card-custom card-custom-table">
+			<div class="card-custom-header">
+				<h4>Thống kê</h4>
+			</div>
+			<div class="card-custom-body">
+				<div class="c-content">
+					<h5 class="s-head">Nhịp tim</h5>
+					<div class="s-content ">
+						<div class="s-form">
+							<label class="note">Nhịp tim trung bình:</label>
+							<span class="val">80/phút</span>
+						</div>
+						<div class="s-form">
+							<label class="note">Số lần đo trong ngày</label>
+							<span class="val">120/ngày</span>
+						</div>
+					</div>
+				</div>
+				<div class="c-content">
+					<h5 class="s-head">Bảng thống kê</h5>
+					<div class="s-content ">
+						<div class="s-table">
+							<table id="heartBeat" class="table table-ajax table-bordered table-striped">
+								<thead>
+									<tr>
+										<th>UserID</th>
+										<th>Số nhịp</th>
+										<th>Thời điểm ghi nhận</th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="card-custom">
+			<div class="card-custom-header">
+				<h4>Chuẩn đoán</h4>
+			</div>
+			<div class="card-custom-body">
+				<div class="c-content">
+					<div class="s-content ">
+						<div class="s-form">
+							<label class="note">Tình trạng sức khỏe</label>
+							<span class="val">Tốt</span>
+						</div>
+						<div class="s-form">
+							<label class="note">Chi tiết</label>
+							<span class="val">Sức khỏe của bạn khá ổn đinh, bạn hãy giữ mức độ tập thể dục đều đặn.</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
+
+<script>
+
+$(document).ready(function(){
+
+    var datatable = $('#heartBeat').DataTable({
+        lengthChange: false,
+		responsive: true,
+		processing: true,
+		searching: false,
+		pageLength: 25,
+		autoWidth: false,
+		bDestroy: true,
+        serverMethod : 'get',
+        ajax : {
+            url : '/api/heartbeat/datatable?userId=63b1c19735e51b802c674ed0',
+			dataType: 'json',
+        },
+        columns : [
+            { 
+				data : 'userId',
+				name: 'userId',
+				width: '40%',
+			},
+            { 
+				data : 'beat',
+				name: 'beat',
+				width: '25%',
+			},
+            { 
+				data : 'createdAt',
+				name: 'createdAt',
+				render: function(data) {
+					return moment(data).format('HH:mm:ss');
+				},
+				width: '35%',
+			},
+        ],
+		columnDefs: [
+			{
+				defaultContent: "-",
+				targets: "_all",
+			},
+			{
+				className: 'dt-body-center',
+				targets: '_all',
+			},
+		],
+    });
+
+});
+
+</script>

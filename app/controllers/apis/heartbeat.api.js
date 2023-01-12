@@ -81,4 +81,37 @@ module.exports = {
       });
     }
   },
+
+  getDatatableHeartBeats: async function (req, res) {
+    try {
+      const userId = req.query.userId;
+      const user = await UserModel.findOne({ _id: userId });
+      if (!user) {
+        return res.status(400).json({
+          status: "error",
+          message: "User not found",
+        });
+      }
+      let now = new Date();
+      let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      let nextDay = new Date();
+      nextDay.setDate(today.getDate() + 1);
+      const heartbeatList = await HeartBeatModel.find({
+        userId,
+        createdAt: {
+          $gte: today,
+          $lt: nextDay,
+        },
+      });
+
+      return res.json({
+        data: heartbeatList
+      });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).json({
+        error: error,
+      });
+    }
+  },
 };
