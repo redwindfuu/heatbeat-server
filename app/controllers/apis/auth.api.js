@@ -11,6 +11,7 @@ const loginApi = async (req, res) => {
         });
       }
     req.session.userId = user.id;
+
     res.redirect("/page/heartbeat");
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -40,7 +41,6 @@ const registerApi = async (req, res) => {
       whereLive,
     });
 
-    // res.json({ user: newUser });
     res.redirect("/page/auth/login");
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -53,7 +53,8 @@ const logoutApi = async (req, res) => {
       if (err) {
         throw err;
       }
-      res.redirect("/");
+      req.session.userId = null;
+      res.redirect("/page/auth/login");
     });
   } catch (error) {
     console.log(error);

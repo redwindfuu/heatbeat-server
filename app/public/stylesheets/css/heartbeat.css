@@ -106,3 +106,10 @@ body {
     display: flow-root;
     padding: 6px 0px;
 }
+
+.card-custom .card-custom-footer a {
+    float: right;
+    margin-top: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+}

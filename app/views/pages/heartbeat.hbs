@@ -12,8 +12,8 @@
 							<img src="https://firebasestorage.googleapis.com/v0/b/calibee-b685e.appspot.com/o/calibee_9378492467_1671779961591.png?alt=media&token=a4c941ea-137b-4dc7-b683-f061f3521945" alt="" width="60" height="60">
 						</div>
 						<div class="info">
-							<div class="name">Nguyễn Hữu Phú</div>
-							<div class="username">ngonghinh</div>
+							<div class="name">{{ data.name }}</div>
+							<div class="username">{{ data.username }}</div>
 						</div>
 					</div>
 				</div>
@@ -21,18 +21,21 @@
 					<div class="s-content ">
 						<div class="s-form">
 							<label class="note">Giới tính:</label>
-							<span class="val">Nữ</span>
+							<span class="val">{{ data.gender }}</span>
 						</div>
 						<div class="s-form">
 							<label class="note">Chơi thể thao:</label>
-							<span class="val">Có</span>
+							<span class="val">{{ data.isPlaySport }}</span>
 						</div>
 						<div class="s-form">
-							<label class="note">Sống tại:</label>
-							<span class="val">Đồng bằng</span>
+							<label class="note">Nơi sống:</label>
+							<span class="val">{{ data.whereLive }}</span>
 						</div>
 					</div>
 				</div>
+			</div>
+			<div class="card-custom-footer">
+				<a href="/api/auth/logout" class="logout">Đăng xuất</a>
 			</div>
 		</div>
 		<div class="card-custom card-custom-table">
@@ -45,11 +48,11 @@
 					<div class="s-content ">
 						<div class="s-form">
 							<label class="note">Nhịp tim trung bình:</label>
-							<span class="val">80/phút</span>
+							<span class="val">{{ data.avg_beat }}/phút</span>
 						</div>
 						<div class="s-form">
 							<label class="note">Số lần đo trong ngày</label>
-							<span class="val">120/ngày</span>
+							<span class="val">{{ data.length }}/ngày</span>
 						</div>
 					</div>
 				</div>
@@ -79,14 +82,20 @@
 			<div class="card-custom-body">
 				<div class="c-content">
 					<div class="s-content ">
-						<div class="s-form">
-							<label class="note">Tình trạng sức khỏe</label>
-							<span class="val">Tốt</span>
-						</div>
-						<div class="s-form">
-							<label class="note">Chi tiết</label>
-							<span class="val">Sức khỏe của bạn khá ổn đinh, bạn hãy giữ mức độ tập thể dục đều đặn.</span>
-						</div>
+						{{#if data.healthInfo}}
+							<div class="s-form">
+								<label class="note">Tình trạng sức khỏe</label>
+								<span class="val">{{ data.healthInfo.evaluate }}</span>
+							</div>
+							<div class="s-form">
+								<label class="note">Chi tiết</label>
+								<span class="val">{{ data.healthInfo.messages }}</span>
+							</div>
+						{{else}}
+							<div class="s-form">
+								<label class="note">Chưa đủ dữ liệu để chuẩn đoán</label>
+							</div>
+						{{/if}}
 					</div>
 				</div>
 			</div>

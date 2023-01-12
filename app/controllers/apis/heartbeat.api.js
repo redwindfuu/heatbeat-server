@@ -24,25 +24,25 @@ module.exports = {
           $lt: nextDay,
         },
       });
-      if (heartbeatList.length <= 10) {
-        return res.status(200).json({
-          status: "fail",
-          message: "Too little data to report",
-        });
-      }
+      let healthInfo = null;
+    if (heartbeatList.length > 10) {
+      healthInfo = calHealth(heartbeatList, user);
+    }
 
-      const healthInfo = calHealth(heartbeatList, user);
-      console.log(heartbeatList[0].beat);
       let avg_beat =
         heartbeatList.reduce((a, b) => a + b.beat, 0) /
         heartbeatList.length;
-      console.log("average" + avg_beat);
+
       const data = {
         userId: user.id,
         name: user.name,
-        messages: healthInfo.message.join(', '),
-        evaluate: healthInfo.evaluate,
-        listHeartBeat: heartbeatList.splice(heartbeatList.length - 5, heartbeatList.length - 1),
+        avg_beat,
+        length: heartbeatList.length,
+        healthInfo: healthInfo ? {
+          messages: healthInfo.message,        
+          evaluate: healthInfo.evaluate,
+        } : null,
+        listHeartBeat: heartbeatList.length > 5 ? heartbeatList.splice(heartbeatList.length - 5, heartbeatList.length - 1) : heartbeatList,
       };
       return res.status(200).json({
         status: "success",

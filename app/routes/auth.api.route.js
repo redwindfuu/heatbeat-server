@@ -11,6 +11,6 @@ router.post(
   AuthApiController.loginApi
 );
 router.post("/register", AuthApiController.registerApi);
-router.post("/logout", AuthApiController.logoutApi);
+router.get("/logout", AuthApiController.logoutApi);
 
 module.exports = router;

@@ -1,6 +1,6 @@
 const e = require("express");
 
-const HEALTH_ASSERT = ["good", "normal", "normal", "bad", "bad"];
+const HEALTH_ASSERT = ["Rất tốt", "Tốt", "Bình thường", "Xấu", "Tệ"];
 
 const calHealth = (dataList, user) => {
   const { isPlaySport, Gender, whereLive, birth } = user;
@@ -25,17 +25,22 @@ const calHealth = (dataList, user) => {
       value: whereLive,
     },
   ];
-  let message = [];
+  let check = [];
   conditions.forEach((condition) => {
     if (!checkHealth(dataList, condition)) {
-      message.push(
-        "your heart rate is not normal compared to your " + condition.title
+      check.push(
+        condition.title
       );
     }
   });
+  if (check.length > 0) {
+    message = 'Chúng tôi chúc mừng vì sức khỏe của bạn khá tốt dựa trên các tiêu chí khác nhau';
+  } else {
+    message = 'Sức khỏe của bạn không được tốt dựa trên các tiêu chí: ' + message.join(', ');
+  }
   const data = {
     message: message,
-    evaluate: HEALTH_ASSERT[message.length],
+    evaluate: HEALTH_ASSERT[check.length],
   };
   return data;
 };
@@ -69,7 +74,7 @@ const checkHealth = (dataList, condition) => {
        */
       if ((condition.value = "male")) {
         dataList.forEach((item, index) => {
-          if (item.beat >= 70 && item.beat <= 75) {
+          if (item.beat >= 70 && item.beat <= 90) {
             count += 1;
           }
         });
@@ -80,7 +85,7 @@ const checkHealth = (dataList, condition) => {
         return false;
       } else {
         dataList.forEach((item, index) => {
-          if (item.beat >= 78 && item.beat <= 82) {
+          if (item.beat >= 78 && item.beat <= 100) {
             count += 1;
           }
         });
@@ -128,7 +133,7 @@ const checkHealth = (dataList, condition) => {
       switch (condition.value) {
         case "Highland":
           dataList.forEach((item, index) => {
-            if (item.beat >= 80 && item.beat <= 140) {
+            if (item.beat >= 65 && item.beat <= 90) {
               count += 1;
             }
           });
@@ -138,7 +143,7 @@ const checkHealth = (dataList, condition) => {
           }
         case "Plateau":
           dataList.forEach((item, index) => {
-            if (item.beat >= 80 && item.beat <= 140) {
+            if (item.beat >= 70 && item.beat <= 100) {
               count += 1;
             }
           });
@@ -148,7 +153,7 @@ const checkHealth = (dataList, condition) => {
           }
         case "Delta":
           dataList.forEach((item, index) => {
-            if (item.beat >= 80 && item.beat <= 140) {
+            if (item.beat >= 75 && item.beat <= 120) {
               count += 1;
             }
           });
