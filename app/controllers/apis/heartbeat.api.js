@@ -13,6 +13,7 @@ module.exports = {
           message: "User not found",
         });
       }
+
       let now = new Date();
       let today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
       let nextDay = new Date();
@@ -24,14 +25,15 @@ module.exports = {
           $lt: nextDay,
         },
       });
-      let healthInfo = null;
-    if (heartbeatList.length > 10) {
-      healthInfo = calHealth(heartbeatList, user);
-    }
 
-      let avg_beat =
-        heartbeatList.reduce((a, b) => a + b.beat, 0) /
-        heartbeatList.length;
+      let healthInfo = null;
+      if (heartbeatList.length > 10) {
+        healthInfo = calHealth(heartbeatList, user);
+      }
+
+      let avg_beat = heartbeatList.length > 0 ?
+      heartbeatList.reduce((a, b) => a + b.beat, 0) /
+      heartbeatList.length : 0;
 
       const data = {
         userId: user.id,
@@ -42,8 +44,9 @@ module.exports = {
           messages: healthInfo.message,        
           evaluate: healthInfo.evaluate,
         } : null,
-        listHeartBeat: heartbeatList.length > 5 ? heartbeatList.splice(heartbeatList.length - 5, heartbeatList.length - 1) : heartbeatList,
+        listHeartBeat: heartbeatList.length > 5 ? heartbeatList.splice(heartbeatList.length - 5, heartbeatList.length - 1) : null,
       };
+
       return res.status(200).json({
         status: "success",
         data,
@@ -55,6 +58,7 @@ module.exports = {
       });
     }
   },
+  
   addHeartbeatByUser: async function (req, res) {
     try {
       const userId = req.user ? req.user._id : req.body.userId;

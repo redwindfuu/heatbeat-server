@@ -35,6 +35,7 @@ module.exports = {
       heartbeatList.length : 0;
 
     let data = {
+      userId: user.id,
       name: user.name,
       username: user.username,
       gender: user.gender ? 'Nam' : 'Nữ',

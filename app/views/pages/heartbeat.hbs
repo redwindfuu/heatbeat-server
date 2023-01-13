@@ -60,7 +60,7 @@
 					<h5 class="s-head">Bảng thống kê</h5>
 					<div class="s-content ">
 						<div class="s-table">
-							<table id="heartBeat" class="table table-ajax table-bordered table-striped">
+							<table id="heartBeat" userID ="{{ data.userId }}" class="table table-ajax table-bordered table-striped">
 								<thead>
 									<tr>
 										<th>UserID</th>
@@ -112,6 +112,7 @@
 <script>
 
 $(document).ready(function(){
+	const userId = $('#heartBeat').attr('userId');
 
     var datatable = $('#heartBeat').DataTable({
         lengthChange: false,
@@ -123,7 +124,7 @@ $(document).ready(function(){
 		bDestroy: true,
         serverMethod : 'get',
         ajax : {
-            url : '/api/heartbeat/datatable?userId=63b1c19735e51b802c674ed0',
+            url : '/api/heartbeat/datatable?userId=' + userId,
 			dataType: 'json',
         },
         columns : [
