@@ -6,7 +6,7 @@ const loginApi = async (req, res) => {
     const user = await Users.findOne({ username: username, password: password });
       if (!user) {
         return res.status(400).json({
-          status: "error",
+          status: false,
           message: "User not found",
         });
       }

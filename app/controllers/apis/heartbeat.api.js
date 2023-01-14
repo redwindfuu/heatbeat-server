@@ -9,7 +9,7 @@ module.exports = {
       const user = await UserModel.findOne({ _id: userId });
       if (!user) {
         return res.status(400).json({
-          status: "error",
+          status: false,
           message: "User not found",
         });
       }
@@ -48,7 +48,7 @@ module.exports = {
       };
 
       return res.status(200).json({
-        status: "success",
+        status: true,
         data,
       });
     } catch (error) {
@@ -66,7 +66,7 @@ module.exports = {
       const user = await UserModel.findOne({ _id: userId });
       if (!user) {
         return res.status(400).json({
-          status: "error",
+          status: false,
           message: "User not found",
         });
       }
@@ -75,7 +75,7 @@ module.exports = {
         beat,
       });
       return res.status(200).json({
-        status: "success",
+        status: true,
         data: heartbeat,
       });
     } catch (error) {
@@ -92,7 +92,7 @@ module.exports = {
       const user = await UserModel.findOne({ _id: userId });
       if (!user) {
         return res.status(400).json({
-          status: "error",
+          status: false,
           message: "User not found",
         });
       }

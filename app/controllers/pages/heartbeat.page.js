@@ -9,7 +9,7 @@ module.exports = {
     const user = await Users.findOne({ _id: userId });
     if (!user) {
       return res.status(400).json({
-        status: "error",
+        status: false,
         message: "User not found",
       });
     }
