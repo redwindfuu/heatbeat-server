@@ -5,7 +5,7 @@ const { calHealth } = require("../../utils/estimateHealth");
 module.exports = {
   getHeartbeatByUser: async function (req, res) {
     try {
-      const userId = req.user ? req.user._id : req.body.userId;
+      const userId = req.user ? req.user._id : req.query.userId;
       const user = await UserModel.findOne({ _id: userId });
       if (!user) {
         return res.status(400).json({
