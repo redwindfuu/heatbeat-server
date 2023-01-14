@@ -62,6 +62,17 @@ const checkHealth = (dataList, condition) => {
           return true;
         }
         return false;
+      } else {
+        dataList.forEach((item, index) => {
+          if (item.beat >= 60 && item.beat <= 100) {
+            count += 1;
+          }
+        });
+        result = (count / dataList.length) * 100;
+        if (result > 70) {
+          return true;
+        }
+        return false;
       }
       break;
     case "Gender":
